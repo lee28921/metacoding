@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenco.blog.mapper.BoardMapper">
+	
+	<insert id="insert">
+		INSERT INTO board_tb (title,content,username,rdate) 
+		VALUES (#{title},#{content},#{username},now())
+	</insert>
+	
+	<select id="readAll" resultType="com.tenco.blog.entity.Board">
+		SELECT * FROM board_tb
+	</select>
+	
+	<select id="readByNo" resultType="com.tenco.blog.entity.Board">
+		SELECT * FROM board_tb WHERE `no`=#{no}
+	</select>
+	
+	<update id="update">
+		UPDATE board_tb SET `title`=#{title}, `content`=#{content} 
+		WHERE `no`=#{no}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM board_tb WHERE `no`=#{no}
+	</delete>
+	
+</mapper>
